@@ -1,6 +1,7 @@
 package Servlets;
 
 import Entities.Book;
+import Exceptions.BookException;
 import Interfaces.BookI;
 
 import javax.ejb.EJB;
@@ -17,7 +18,7 @@ import java.sql.Date;
 @WebServlet(urlPatterns = "AddBook")
 public class AddBook extends Custom {
     @EJB
-    BookI bookI;
+    private BookI bookI;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,11 +38,20 @@ public class AddBook extends Custom {
         CustomAddBook customAddBook = new CustomAddBook();
         if (session.getAttribute("Lusern") != null) {
             Book book = customAddBook.addBook(req);
-            if (bookI.add(book)) {
-                printWriter(resp, "<html><body><p> Successfully Added! : <a href=\"LibrarianHomePage\">Home</a> </p></body></html>");
-            } else {
-                RequestDispatcher rd = req.getRequestDispatcher("AddBook");
-                rd.forward(req, resp);
+            try {
+                if (bookI.viewById(book) == null) {
+                    if (bookI.add(book)) {
+                        printWriter(resp, "<html><body><p> Successfully Added! : <a href=\"LibrarianHomePage\">Home</a> </p></body></html>");
+                    } else {
+                        RequestDispatcher rd = req.getRequestDispatcher("AddBook");
+                        rd.forward(req, resp);
+                    }
+                } else {
+                    printWriter(resp, "<html><body><p> Book Already Exixts! : <a href=\"LibrarianHomePage\">Home</a> </p></body></html>");
+                }
+
+            } catch (BookException e) {
+                e.printStackTrace();
             }
         } else {
             printWriter(resp, "<html><body><p>Please Login! : <a href=\"HomePage\">Login</a> </p></body></html>");

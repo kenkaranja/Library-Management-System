@@ -2,10 +2,11 @@ package Beans;
 
 import Dao.*;
 import Entities.*;
-import Events.AuditTrailEvent;
 import Exceptions.BookException;
+import Interfaces.BookI;
 import Interfaces.LibrarianI;
 
+import javax.ejb.EJB;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -15,6 +16,9 @@ import java.util.List;
 @Local
 @Stateless
 public class LibrarianBean implements LibrarianI {
+    @EJB
+    private BookI bookI;
+
     @PersistenceContext
     private EntityManager em;
 
@@ -23,9 +27,12 @@ public class LibrarianBean implements LibrarianI {
         return librarianDao.add(librarian);
     }
 
+    public boolean addBook(Book book) {
+        return bookI.add(book);
+    }
+
     public List<Book> viewAll() throws BookException {
-        BookDao bookDao = new BookDao(em);
-        return bookDao.viewAll();
+        return bookI.viewAll();
     }
 
     public List<IssuedBook> viewIssued() {
@@ -39,4 +46,13 @@ public class LibrarianBean implements LibrarianI {
         return issuedBookDao.viewEachIssued(regNo, bookId);
     }
 
+    public List<ReturnInfo> viewDebtInfo(ReturnInfo returnInfo) {
+        ReturnInfoDao returnInfoDao = new ReturnInfoDao(em);
+        return returnInfoDao.viewDebtInfo(returnInfo);
+    }
+
+    public ReturnInfo viewDebtInfoO(ReturnInfo returnInfo) {
+        ReturnInfoDao returnInfoDao = new ReturnInfoDao(em);
+        return returnInfoDao.viewDebtInfoO(returnInfo);
+    }
 }

@@ -11,10 +11,10 @@ public class AuditTrail {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
-    String userType;
-    String detail;
-    Date date;
-    String username;
+    private String userType;
+    private String detail;
+    private Date date;
+    private String username;
 
     public String getUserType() {
         return userType;
@@ -23,6 +23,7 @@ public class AuditTrail {
     public void setUserType(String userType) {
         this.userType = userType;
     }
+
 
     public String getDetail() {
         return detail;

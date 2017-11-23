@@ -19,9 +19,10 @@
                 <li><a href="AddStudent">Add Student</a></li>
                 <li><a href="AddBook">Add Book</a></li>
                 <li><a href="IssueBook">Issue Book</a></li>
-                <li><a href="ReturnBook">Return Book</a></li>
                 <li><a href="LibrarianViewBook">View Books</a></li>
                 <li><a href="LibrarianViewIssued">View Borrowed Books</a></li>
+                <li><a href="LibrarianViewReturnInfo">View Return Info</a></li>
+                <li><a href="StudentPayDebt">Student Pay Debt</a></li>
                 <l><a href="LibrarianLogout">Logout</a></l>
                 <li style="text-align: center; font-weight: bold; font-size: medium ">
                     Welcome <%session.getAttribute("Lusern");%></li>

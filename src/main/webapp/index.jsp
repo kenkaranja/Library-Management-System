@@ -9,6 +9,32 @@
 <html>
 <head>
     <title>Title</title>
+    <script>
+        function validateLibrarian() {
+            var username = document.form.username.value;
+            var password = document.form.password.value;
+            if (username == null || username == "") {
+                alert("Username can't be blank");
+                return false;
+            }
+            else if (password.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
+        }
+        function validateStudent() {
+            var regno = document.form.regno.value;
+            var password = document.form.password.value;
+            if (regno == null || regno == "") {
+                alert("Regno can't be blank");
+                return false;
+            }
+            else if (password.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
 
@@ -51,7 +77,7 @@
     <div class="row">
         <div class="col-md-6">
             <h2>Librarian Login</h2>
-            <form action="LibrarianLogin" method="post">
+            <form action="LibrarianLogin" method="post" onsubmit="validateLibrarian()">
                 <table align="center">
                     <tr>
                         <td>Username:</td>
@@ -73,7 +99,7 @@
 
         <div class="col-md-6">
             <h2>Student Login</h2>
-            <form action="StudentLogin" method="post">
+            <form action="StudentLogin" method="post" onsubmit="validateStudent()">
                 <table>
                     <tr>
                         <td>Student RegNo:</td>

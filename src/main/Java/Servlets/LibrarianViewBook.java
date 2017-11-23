@@ -2,7 +2,6 @@ package Servlets;
 
 import Entities.Book;
 import Exceptions.BookException;
-import Interfaces.BookI;
 import Interfaces.LibrarianI;
 
 import javax.ejb.EJB;
@@ -32,7 +31,8 @@ public class LibrarianViewBook extends Custom {
                     req.setAttribute("booklist", bookList);
                     RequestDispatcher requestDispatcher = req.getRequestDispatcher("ViewBookLibrarian.jsp");
                     requestDispatcher.forward(req, resp);
-                } else {
+                }
+                else {
                     printWriter(resp, "\"<html><body><p>No books! : <a href=\"LibrarianHomePage\">Home</a> </p></body></html>\"");
                 }
             } catch (BookException e) {

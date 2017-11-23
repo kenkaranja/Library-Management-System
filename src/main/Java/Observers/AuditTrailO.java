@@ -9,8 +9,7 @@ import javax.enterprise.event.Observes;
 
 public class AuditTrailO {
     @EJB
-    AuditTrailI auditTrailI;
-
+    private AuditTrailI auditTrailI;
     public void observerEvent(@Observes AuditTrailEvent event) {
         auditTrailI.add(event.getAuditTrail());
     }

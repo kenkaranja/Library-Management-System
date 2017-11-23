@@ -35,6 +35,8 @@
                 <td>Today Date</td>
                 <td>Late</td>
                 <td>LateFee</td>
+                <td>Amount Paid</td>
+                <td>Paid</td>
                 </thead>
             </tr>
             <c:forEach var="returnBook" items="${booklist}">
@@ -48,6 +50,8 @@
                     <td><c:out value="${returnBook.todayDate}"></c:out></td>
                     <td><c:out value="${returnBook.late}"></c:out></td>
                     <td><c:out value="${returnBook.lateFee}"></c:out></td>
+                    <td><c:out value="${returnBook.amountPaid}"></c:out></td>
+                    <td><c:out value="${returnBook.paid}"></c:out></td>
                 </tr>
             </c:forEach>
 

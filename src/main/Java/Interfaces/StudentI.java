@@ -1,9 +1,6 @@
 package Interfaces;
 
-import Entities.AuditTrail;
-import Entities.Book;
-import Entities.IssuedBook;
-import Entities.Student;
+import Entities.*;
 import Exceptions.BookException;
 
 import javax.ejb.Local;
@@ -22,6 +19,7 @@ public interface StudentI {
     List<IssuedBook> viewBorrowed(String regno) throws BookException;
 
     List<Book> viewBookByName(Book book) throws BookException;
+
 
 
 

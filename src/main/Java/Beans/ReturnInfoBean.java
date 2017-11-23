@@ -25,4 +25,14 @@ public class ReturnInfoBean implements ReturnInfoI {
         ReturnInfoDao returnInfoDao = new ReturnInfoDao(em);
         return returnInfoDao.viewReturnInfo(returnInfo);
     }
+
+    public boolean payDebt(ReturnInfo returnInfo) {
+        ReturnInfoDao returnInfoDao = new ReturnInfoDao(em);
+        return returnInfoDao.payDebt(returnInfo);
+    }
+
+    public List<ReturnInfo> viewAllDebt() {
+        ReturnInfoDao returnInfoDao = new ReturnInfoDao(em);
+        return returnInfoDao.viewAllDebt();
+    }
 }

@@ -27,29 +27,31 @@ public class UpdatingBook extends Custom {
             Book book1 = null;
             try {
                 book1 = bookI.viewById(book);
+                if (book1 != null && !book1.getAvailable().equals("no")) {
+                    book1.setIsbn(get(req, "isbn"));
+                    book1.setBookName(get(req, "bname"));
+                    book1.setAuthor(get(req, "author"));
+                    book1.setEdition(get(req, "edition"));
+                    book1.setShelfNo(get(req, "shelfno"));
+                    book1.setRowNo(get(req, "row"));
+                    book1.setColumNo(get(req, "column"));
+                    book1.setCategory(get(req, "category"));
+                    try {
+                        if (bookI.update(book1)) {
+                            resp.sendRedirect("LibrarianViewBook");
+                        } else {
+                            resp.sendRedirect("LibrarianViewBook");
+                        }
+                    } catch (BookException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    printWriter(resp, "<html><body><p>No Book Found! : <a href=\"LibrarianViewBook\">LibrarianViewBook</a> </p></body></html>");
+                }
             } catch (BookException e) {
                 e.printStackTrace();
             }
-            if (book1 != null) {
-                book1.setIsbn(get(req, "isbn"));
-                book1.setBookName(get(req, "bname"));
-                book1.setAuthor(get(req, "author"));
-                book1.setEdition(get(req, "edition"));
-                book1.setShelfNo(get(req, "shelfno"));
-                book1.setRowNo(get(req, "row"));
-                book1.setColumNo(get(req, "column"));
-                try {
-                    if (bookI.update(book1)) {
-                        resp.sendRedirect("LibrarianViewBook");
-                    } else {
-                        resp.sendRedirect("UpdatingBook");
-                    }
-                } catch (BookException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                resp.sendRedirect("UpdatingBook");
-            }
+
 
         } else {
             printWriter(resp, "<html><body><p>Please Login! : <a href=\"HomePage\">Login</a> </p></body></html>");

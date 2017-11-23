@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
 public @interface Login {
     login value();
 
-    public enum login {
+    enum login {
         Student, Librarian
     }
 }

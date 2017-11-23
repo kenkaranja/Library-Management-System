@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(urlPatterns = "LibrarianLogin")
 public class LibrarianLogin extends Custom {
@@ -37,7 +36,7 @@ public class LibrarianLogin extends Custom {
             session.setAttribute("Lusern", get(req, "username"));
             printWriter(resp, "<html><body><p> Successfully Login! : <a href=\"LibrarianHomePage\">Home</a> </p></body></html>");
         } else {
-            resp.sendRedirect("WrongCredentials");
+          resp.sendRedirect("error.jsp");
         }
     }
 }

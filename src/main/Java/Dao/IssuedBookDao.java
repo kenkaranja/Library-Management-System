@@ -2,16 +2,16 @@ package Dao;
 
 import Entities.Book;
 import Entities.IssuedBook;
+import Entities.Student;
 import Exceptions.BookException;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 import java.util.List;
 
 public class IssuedBookDao {
 
-    private EntityManager em;
+    private final EntityManager em;
 
     public IssuedBookDao(EntityManager em) {
         this.em = em;
@@ -33,7 +33,6 @@ public class IssuedBookDao {
         try {
             em.merge(book);
             em.persist(issuedBook);
-
             return true;
         } catch (PersistenceException e) {
             e.printStackTrace();

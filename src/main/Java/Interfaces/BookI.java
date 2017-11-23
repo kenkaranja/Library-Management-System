@@ -2,7 +2,6 @@ package Interfaces;
 
 import Entities.Book;
 import Entities.IssuedBook;
-import Entities.ReturnInfo;
 import Exceptions.BookException;
 
 import javax.ejb.Local;

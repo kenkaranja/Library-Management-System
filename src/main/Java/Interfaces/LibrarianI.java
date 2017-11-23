@@ -10,10 +10,15 @@ import java.util.List;
 public interface LibrarianI {
     boolean add(Librarian librarian);
 
+    boolean addBook(Book book);
+
     List<Book> viewAll() throws BookException;
 
     List<IssuedBook> viewIssued();
 
+    List<ReturnInfo> viewDebtInfo(ReturnInfo returnInfo);
+
+    ReturnInfo viewDebtInfoO(ReturnInfo returnInfo);
 
 
 }

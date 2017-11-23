@@ -10,4 +10,9 @@ public interface ReturnInfoI {
     boolean add(ReturnInfo returnInfo);
 
     List<ReturnInfo> viewReturnInfo(ReturnInfo returnInfo);
+
+    boolean payDebt(ReturnInfo returnInfo);
+
+    List<ReturnInfo> viewAllDebt();
+
 }

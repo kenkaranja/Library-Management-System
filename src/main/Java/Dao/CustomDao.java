@@ -3,14 +3,14 @@ package Dao;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 
-public class CustomDao<T> {
-    EntityManager em;
+class CustomDao<T> {
+    final EntityManager em;
 
-    public CustomDao(EntityManager em) {
+    CustomDao(EntityManager em) {
         this.em = em;
     }
 
-    public boolean addCustom(T t) {
+    boolean addCustom(T t) {
         try {
             em.persist(t);
             return true;

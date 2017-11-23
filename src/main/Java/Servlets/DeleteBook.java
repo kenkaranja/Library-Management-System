@@ -12,12 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(urlPatterns = "DeleteBook")
 public class DeleteBook extends Custom {
     @EJB
-    BookI bookI;
+    private BookI bookI;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -36,12 +35,20 @@ public class DeleteBook extends Custom {
         if (session.getAttribute("Lusern") != null) {
             Book book = new Book();
             book.setBookId(get(req, "bookId"));
+
             try {
-                if (bookI.deleteBook(book)) {
-                    resp.sendRedirect("LibrarianViewBook");
-                } else {
-                    resp.sendRedirect("DeleteBook");
+                Book book1 = bookI.viewById(book);
+                if (book1 != null && book1.getAvailable().equals("yes")) {
+                    if (bookI.deleteBook(book1)) {
+                        resp.sendRedirect("LibrarianViewBook");
+                    } else {
+                        resp.sendRedirect("DeleteBook");
+                    }
                 }
+                else {
+                    printWriter(resp,"<html><body><p> Cannot Delete!!! Book already issued! : <a href=\"LibrarianViewBook\">Back</a> </p></body></html>");
+                }
+
             } catch (BookException e) {
                 e.printStackTrace();
             }

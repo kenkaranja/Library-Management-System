@@ -56,7 +56,6 @@ public class Student extends User {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }

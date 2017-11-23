@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 
 @Local
 @Stateless
-public class AuditTrailBean implements AuditTrailI{
+public class AuditTrailBean implements AuditTrailI {
     @PersistenceContext
     private EntityManager em;
 

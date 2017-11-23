@@ -70,5 +70,6 @@
         </table>
     </div>
 </div>
+<img src="images/HP-PC%20-%20IMG_20160529_132554.jpg" alt="image">
 </body>
 </html>

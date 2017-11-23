@@ -2,17 +2,15 @@ package Dao;
 
 import Entities.Book;
 import Entities.IssuedBook;
-import Entities.ReturnInfo;
 import Exceptions.BookException;
 import org.jboss.logging.Logger;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 import java.util.List;
 
 public class BookDao extends CustomDao<Book> {
-    Logger logger = Logger.getLogger(BookDao.class);
+    private final Logger logger = Logger.getLogger(BookDao.class);
 
     public BookDao(EntityManager em) {
         super(em);
@@ -91,12 +89,8 @@ public class BookDao extends CustomDao<Book> {
 
     public boolean deleteBook(Book book) throws BookException {
         try {
-            int delete = em.createNamedQuery("deleteBook").setParameter("bookId", book.getBookId()).executeUpdate();
-            if (delete > 0) {
-                return true;
-            } else {
-                return false;
-            }
+            em.remove(em.merge(book));
+            return true;
         } catch (PersistenceException ex) {
             logger.warn(ex.getMessage());
             return false;

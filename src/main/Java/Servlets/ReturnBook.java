@@ -24,22 +24,26 @@ import java.util.Date;
 @WebServlet(urlPatterns = "ReturnBook")
 public class ReturnBook extends Custom {
     @EJB
+    private
     BookI bookI;
 
     @EJB
+    private
     IssuedBookI issuedBookI;
 
     @EJB
+    private
     StudentI studentI;
 
     @EJB
+    private
     ReturnInfoI returnInfoI;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
         if (session.getAttribute("Lusern") != null) {
-            RequestDispatcher rd = req.getRequestDispatcher("ReturnBook.jsp");
+            RequestDispatcher rd = req.getRequestDispatcher("LibrarianViewIssued.jsp");
             rd.forward(req, resp);
         } else {
             printWriter(resp, "<html><body><p>Please Login! : <a href=\"HomePage\">Login</a> </p></body></html>");
@@ -69,6 +73,8 @@ public class ReturnBook extends Custom {
                     issuedBook1.setReturnStatus("yes");
                     returnInfo.setTodayDate(new Date());
                     returnInfo.setIssuedBook(issuedBook1);
+                    returnInfo.setAmountPaid(0);
+                    returnInfo.setPaid("no");
                     //in milliseconds
                     long diff = new Date().getTime() - issuedBook1.getReturnDate().getTime();
                     if (diff < 0) {

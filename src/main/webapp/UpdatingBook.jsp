@@ -49,6 +49,8 @@
             <td>Category:</td>
             <td>
                 <select name="category">
+                    <option><%=session.getAttribute("category")%>
+                    </option>
                     <option>English</option>
                     <option>Math</option>
                     <option>Kiswahili</option>

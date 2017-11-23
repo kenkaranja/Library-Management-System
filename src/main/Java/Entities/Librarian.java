@@ -14,22 +14,6 @@ public class Librarian extends User {
     private String librarianName;
     private String username;
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getLibrarianName() {
-        return librarianName;
-    }
-
-    public void setLibrarianName(String librarianName) {
-        this.librarianName = librarianName;
-    }
-
     public long getId() {
         return id;
     }
@@ -44,5 +28,21 @@ public class Librarian extends User {
 
     public void setLibrarianId(String librarianId) {
         this.librarianId = librarianId;
+    }
+
+    public String getLibrarianName() {
+        return librarianName;
+    }
+
+    public void setLibrarianName(String librarianName) {
+        this.librarianName = librarianName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

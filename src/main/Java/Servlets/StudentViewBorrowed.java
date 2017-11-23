@@ -17,6 +17,7 @@ import java.util.List;
 @WebServlet(urlPatterns = "StudentViewBorrowed")
 public class StudentViewBorrowed extends Custom {
     @EJB
+    private
     StudentI studentI;
 
     @Override

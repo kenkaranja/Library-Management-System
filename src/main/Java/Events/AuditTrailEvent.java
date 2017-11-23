@@ -3,7 +3,7 @@ package Events;
 import Entities.AuditTrail;
 
 public class AuditTrailEvent {
-    AuditTrail auditTrail;
+    private AuditTrail auditTrail;
 
     public AuditTrail getAuditTrail() {
         return auditTrail;

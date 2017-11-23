@@ -19,7 +19,7 @@
     <title>Add-Book</title>
 </head>
 <body>
-<form action="AddBook" method="post">
+<form action="AddBook" method="post" enctype="multipart/form-data">
     <table align="center">
         <th><h2>Add Book</h2></th>
         <tr>
@@ -72,7 +72,10 @@
             <td>Price:</td>
             <td><input type="text" name="price" required/></td>
         </tr>
-
+        <tr>
+            <td>Book Image:</td>
+            <td><input type="file" name="photo" size="50"/></td>
+        </tr>
         <tr>
             <td colspan="2" align="center"><input type="submit" value="Add Book"/></td>
         </tr>

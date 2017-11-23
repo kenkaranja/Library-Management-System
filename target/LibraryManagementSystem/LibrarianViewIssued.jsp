@@ -29,14 +29,12 @@
                 <td>BookNo</td>
                 <td>ISBN</td>
                 <td>Name</td>
-                <td>Author</td>
-                <td>Edition</td>
-                <td>Category</td>
                 <td>Student regNo</td>
                 <td>Student Name</td>
                 <td>Issued Date</td>
                 <td>Return Date</td>
                 <td>Return Status</td>
+                <td>Action</td>
                 </thead>
             </tr>
             <c:forEach var="book" items="${booklist}">
@@ -44,14 +42,16 @@
                     <td><c:out value="${book.book.bookId}"></c:out></td>
                     <td><c:out value="${book.book.isbn}"></c:out></td>
                     <td><c:out value="${book.book.bookName}"></c:out></td>
-                    <td><c:out value="${book.book.author}"></c:out></td>
-                    <td><c:out value="${book.book.edition}"></c:out></td>
-                    <td><c:out value="${book.book.category}"></c:out></td>
                     <td><c:out value="${book.student.regNo}"></c:out></td>
                     <td><c:out value="${book.student.name}"></c:out></td>
                     <td><c:out value="${book.issueDate}"></c:out></td>
                     <td><c:out value="${book.returnDate}"></c:out></td>
                     <td><c:out value="${book.returnStatus}"></c:out></td>
+                    <form action="ReturnBook" method="post">
+                        <input type="hidden" name="bookid" value="${book.book.bookId}">
+                        <input type="hidden" name="studentregno" value="${book.student.regNo}">
+                        <td><input type="submit" value="Return Book"></td>
+                    </form>
                 </tr>
             </c:forEach>
         </table>

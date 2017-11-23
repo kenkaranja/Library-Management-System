@@ -11,8 +11,7 @@ import java.sql.Date;
         @NamedQuery(name = "viewBorrow", query = "select b from Book b  where b.available='no'"),
         @NamedQuery(name = "viewAllBook", query = "select  b from  Book  b"),
         @NamedQuery(name = "updateBook", query = "update Book set bookId=:bookId, bookName=:bname,author=:author"),
-        @NamedQuery(name = "deleteBook", query = "delete from Book b where b.bookId=:bookId"),
-        @NamedQuery(name = "viewBookByCategory", query = "select b from Book b where b.category=:category"),
+        @NamedQuery(name = "viewBookByCategory", query = "select b from Book b where b.category=:category")
 
 })
 @Entity
@@ -33,6 +32,16 @@ public class Book {
     private String available;
     private float price;
     private Date addedDate;
+    private String photo;
+
+    public String getPhoto() {
+        return photo;
+    }
+
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
 
     public String getBookName() {
         return bookName;
@@ -50,9 +59,6 @@ public class Book {
         this.addedDate = addedDate;
     }
 
-    public double getPrice() {
-        return price;
-    }
 
     public String getRowNo() {
         return rowNo;
@@ -137,5 +143,9 @@ public class Book {
 
     public void setEdition(String edition) {
         this.edition = edition;
+    }
+
+    public float getPrice() {
+        return price;
     }
 }

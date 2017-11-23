@@ -1,10 +1,6 @@
 package Servlets;
 
-import Dao.CustomDao;
-import Entities.Book;
 import Entities.IssuedBook;
-import Entities.Student;
-import Interfaces.BookI;
 import Interfaces.ReturnInfoI;
 
 import javax.ejb.EJB;
